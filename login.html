@@ -8,10 +8,61 @@
 </head>
 <body>
 	<div class="login_header">
-		<div class="half_w_tw f_l_tw login_header_l">dfd</div>
+		<div class="tw_half_min tw_f_l txt_center pro_title">运维管理工具</div>
 	</div>
-	<div class="content_main">asdf</div>
+	<div class="content_main">
+		<div class="login_canvas">
+			<div class="l_form_item_user txt_center">
+				<input type="text" id="l_form_item_user" class="login_input block_radius_min" placeholder="用户名"/>
+			</div>
+			<div class="l_form_item_pass txt_center">
+				<input type="password" id="l_form_item_pass" class="login_input block_radius_min" placeholder="密码"/>
+			</div>
+			<div class="l_form_item_btn">
+				<a class="btn_light_tw login_btn block_center block_radius_max" onclick="toLogin()">登&nbsp;&nbsp;录</a>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
 <script src="plugins/jquery-1.9.1.js" type="text/javascript"></script>
 <script src="js/tools.js" type="text/javascript"></script>
+<script  type="text/javascript">
+function toLogin()
+{
+	var userid=$("#l_form_item_user").val();
+	var password=$("#l_form_item_pass").val();
+	if(userid=="")
+	{
+		alert("用户名不能为空");
+		return;
+	}
+	else if(password=="")
+	{
+		alert("密码不能为空");
+		return;
+	}
+	$.ajax({type:'POST',
+	  url: getHost()+"user/login?token="+getLocalCache("token")+"&username="+userid+"&password="+password,
+	  success: function(data){
+	  if(data)
+	  {
+		var obj=eval(data);
+		if(obj.code==0)
+		{
+			alert("登录成功");
+			window.location.href="index.html";
+		}
+		else
+		{
+			alert("用户名或密码错误");
+		}
+	  }
+	 },
+	 error: function()
+	 {
+		alert("请求失败");
+		}
+	});
+}
+</script>

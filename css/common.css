@@ -1,6 +1,12 @@
 /* CSS Document create by tw 2015-12-8*/
-.login_header{position:absolute;height:155px;top:0;left:0;z-index:2;}
-.login_header_l{height:155px;background-image:url(../img/top_l.jpg);background-repeat:no-repeat;background-position:right;}
+.login_header{position:absolute;height:84px;top:0;left:0;border-bottom:solid 1px #6cc96c;z-index:2;}
+.pro_title{font-size:22px;font-weight:bold;line-height:84px;color:#66CCFF;}
 /*登陆页面-----------------------------------------------------------------------------------------*/
-.content_main{height:442px;margin-top:155px;background-image:url(../img/login_bg.jpg);}
-.ok{}
+.content_main{height:500px;margin-top:86px;}
+.login_canvas{width:659px;height:438px;background-image:url(../img/login_canv.jpg);margin:40px auto 0 auto;}
+.login_btn{width:585px;height:80px;line-height:80px;font-size:22px;font-weight:bold;}
+.l_form_item_user{margin-top:114px;}
+.l_form_item_pass{margin-top:34px;}
+.l_form_item_btn{margin-top:34px;}
+input.login_input{width:583px;height:60px;line-height:60px;background-color:#FAFFBD;
+border:solid 1px #ddd;text-align:center;font-size:16px;}

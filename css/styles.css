@@ -1,7 +1,26 @@
 /* CSS Document create by tw 2015-12-8*/
-body{font-size:13px;font-family:"微软雅黑";background-color:#E7E8EC;margin:0;}
+body{font-size:13px;font-family:"微软雅黑";background-color:#fff;margin:0;}
 div{width:100%;height:auto;overflow:hidden;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;-o-box-sizing: border-box;
 -ms-box-sizing: border-box;box-sizing: border-box;}
-div.half_w_tw{width:50%;}
-div.f_l_tw{float:left;}
-div.f_r_tw{float:right;}
+div.tw_half_w{width:50%;}div.tw_half_min{width:20%;}div.tw_half_max{width:80%;}
+div.tw_f_l{float:left;}
+div.tw_f_r{float:right;}
+.btn_light_tw
+{
+	display:block;
+	text-align:center;
+	background-color:#5BB85D;
+	color:#fff;
+}
+.btn_light_tw:hover
+{
+	display:block;
+	text-align:center;
+	background-color:#6cc96c;
+	color:#fff;
+	cursor:pointer;
+}
+.block_radius_min{-moz-border-radius: 5px;-webkit-border-radius: 5px;border-radius:5px;}
+.block_radius_max{-moz-border-radius: 8px;-webkit-border-radius: 8px;border-radius:8px;}
+.block_center{margin:auto;}
+.txt_center{text-align:center;}
