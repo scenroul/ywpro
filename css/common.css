@@ -1,0 +1,5 @@
+/* CSS Document create by tw 2015-12-8*/
+.login_header{position:absolute;height:155px;top:0;left:0;z-index:2;}
+.login_header_l{height:155px;background-image:url(../img/top_l.jpg);background-repeat:no-repeat;background-position:right;}
+/*登陆页面-----------------------------------------------------------------------------------------*/
+.content_main{height:442px;margin-top:155px;background-image:url(../img/login_bg.jpg);}
