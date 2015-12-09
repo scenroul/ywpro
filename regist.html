@@ -38,9 +38,10 @@
 <script src="plugins/jquery-1.9.1.js" type="text/javascript"></script>
 <script src="js/tools.js" type="text/javascript"></script>
 <script  type="text/javascript">
+var userid="";
 function toRegist()
 {
-	var userid=$("#r_form_item_user").val();
+	userid=$("#r_form_item_user").val();
 	var password=$("#r_form_item_pass").val();
 	var email=$("#r_form_item_email").val();
 	var tel=$("#r_form_item_phone").val();
@@ -74,9 +75,9 @@ function toRegist()
 		alert("手机号码格式错误");
 		return;
 	}
-	$("#test").html(getHost()+"user/register?username="+userid+"&password="+password+"&email="+email+"&phone="+tel);
 	$.ajax({type:'POST',
-	  url: getHost()+"user/register?username="+userid+"&password="+password+"&email="+email+"&phone="+tel,
+	  url: getHost()+"user/register",
+	  data:{"username":userid,"password":password,"email":email,"phone":tel},
 	  success: function(data){
 	  if(data)
 	  {
@@ -85,7 +86,8 @@ function toRegist()
 		if(obj.code==0)
 		{
 			alert("注册成功");
-			setLocalCache("token", obj.data.token)
+			setLocalCache("token", obj.data.token);
+			setLocalCache("userid",userid);
 			window.location.href="index.html";
 		}
 		else

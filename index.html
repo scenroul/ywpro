@@ -7,8 +7,64 @@
 <link href="css/common.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-欢迎使用，开发中。。。
+	<div class="login_header">
+		<div class="tw_half_min tw_f_l txt_center pro_title">运维管理工具</div>
+		<div class="tw_half_min tw_f_r txt_center">当前用户:&nbsp;<span class="txt_red" id="user_userid">lsgjw3</span>&nbsp;
+		<a class="a_blue" href="javascript:void(0);" onclick="logOut()">退出</a>
+		</div>
+	</div>
+	<div class="i_content_main">
+		<div class="i_menue" id="menue_box">
+			<ul>
+				<div class="m_item"></div>
+				<div class="m_item"></div>
+				<div class="m_item"></div>
+				<div class="m_item"></div>
+			</ul>
+		</div>
+		<div class="i_canvas block_radius_max">
+		</div>
+	</div>
 </body>
 </html>
 <script src="plugins/jquery-1.9.1.js" type="text/javascript"></script>
 <script src="js/tools.js" type="text/javascript"></script>
+<script  type="text/javascript">
+var userid=getLocalCache("userid");
+var menue_click=function($menue)
+{
+	
+}
+jQuery(function()
+{
+	$("#user_userid").text(userid);
+});
+function logOut()
+{
+	$.ajax({type:'POST',
+	  url: getHost()+"user/logout",
+	  data:{},
+	  success: function(data){
+	  if(data)
+	  {
+		
+		var obj=eval(data);
+		if(obj.code==0)
+		{
+			setLocalCache("token",'null');
+			setLocalCache("userid",'null');
+			window.location.href="login.html";
+		}
+		else
+		{
+			alert("退出失败");
+		}
+	  }
+	 },
+	 error: function()
+	 {
+		alert("提交请求失败");
+		}
+	});
+}
+</script>

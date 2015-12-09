@@ -1,7 +1,7 @@
 /* CSS Document create by tw 2015-12-8*/
 .login_header{position:absolute;height:84px;line-height:84px;top:0;left:0;border-bottom:solid 2px #333;z-index:2;}
 .pro_title{font-size:22px;font-weight:bold;line-height:84px;color:#666;}
-/*登陆页面-----------------------------------------------------------------------------------------*/
+/*login页面-----------------------------------------------------------------------------------------*/
 .l_content_main{height:500px;margin-top:86px;}
 .login_canvas{width:659px;height:438px;background-image:url(../img/login_canv.jpg);margin:40px auto 0 auto;}
 .login_btn{width:585px;height:80px;line-height:80px;font-size:22px;font-weight:bold;}
@@ -10,10 +10,14 @@
 .l_form_item_btn{margin-top:34px;}
 input.login_input{width:583px;height:60px;line-height:60px;background-color:#FdFFdf;
 border:solid 1px #ddd;text-align:center;font-size:16px;}
-/*注册页面-----------------------------------------------------------------------------------------*/
+/*regist页面-----------------------------------------------------------------------------------------*/
 .r_content_main{height:600px;margin-top:86px;}
 .regist_canvas{width:659px;height:470px;border:solid 2px #ddd;margin:40px auto 0 auto;}
 .r_form_item_user{margin-top:25px;}
 .r_form_item_pass{margin-top:10px;}
 .r_form_item_email{margin-top:10px;}
 .r_form_item_phone{margin-top:10px;}
+/*index页面-----------------------------------------------------------------------------------------*/
+.i_content_main{height:600px;margin-top:86px;background-color:#EFF9FB;}
+.i_canvas{width:80%;height:470px;padding:10px;border:solid 2px #666;margin:20px 20px 0 0;float:right;background-color:#fff;}
+.i_menue{width:200px;height:470px;border:solid 2px #666;margin:20px 0 0 10px;float:left;background-color:#fff;}
