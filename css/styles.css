@@ -24,3 +24,10 @@ div.tw_f_r{float:right;}
 .block_radius_max{-moz-border-radius: 8px;-webkit-border-radius: 8px;border-radius:8px;}
 .block_center{margin:auto;}
 .txt_center{text-align:center;}
+/*
+a:hover 必须位于 a:link 和 a:visited 之后！！a:active 必须位于 a:hover 之后！！
+*/
+a:link{color:#5BB85D;text-decoration:none;}
+a:visited{color:#5BB85D;text-decoration:none;}
+a:hover{color:#6cc96c;text-decoration:underline;}
+a:active{color:#6cc96c;text-decoration:none;}
