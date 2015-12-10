@@ -38,13 +38,11 @@ function logOut()
 {
 	$.ajax({type:'POST',
 	  url: getHost()+"user/logout",
-	  dataType: "jsonp"
 	  data:{},
 	  success: function(data){
 	  if(data)
 	  {
-		
-		var obj=eval(data);
+		var obj=eval('(' + data + ')');
 		if(obj.code==0)
 		{
 			setLocalCache("token",'null');

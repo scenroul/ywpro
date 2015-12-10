@@ -77,13 +77,11 @@ function toRegist()
 	}
 	$.ajax({type:'POST',
 	  url: getHost()+"user/register",
-	  dataType: "jsonp",
 	  data:{"username":userid,"password":password,"email":email,"phone":tel},
 	  success: function(data){
 	  if(data)
 	  {
-		alert(data);
-		var obj=eval(data);
+		var obj=eval('(' + data + ')');
 		alert(obj.code);
 		if(obj.code==0)
 		{
