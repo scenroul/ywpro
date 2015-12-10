@@ -51,13 +51,12 @@ function loadGroups()
 {
 	$.ajax({type:'GET',
 	  url: getHost()+"group/list",
-	  dataType: "jsonp"
 	  data:{"token":getLocalCache("token")},
 	  success: function(data){
 	  if(data)
 	  {
 		alert(data);
-		var obj=eval(data);
+		var obj=eval('(' + data + ')');
 		if(obj.code==0)
 		{
 			
