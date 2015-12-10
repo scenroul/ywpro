@@ -52,7 +52,7 @@ function toLogin()
 	  success: function(data){
 	  if(data)
 	  {
-		var obj=data;
+		var obj=eval(data);
 		if(obj.code==0)
 		{
 			alert("登录成功");
