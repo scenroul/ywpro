@@ -38,6 +38,7 @@ function logOut()
 {
 	$.ajax({type:'POST',
 	  url: getHost()+"user/logout",
+	  dataType: "jsonp"
 	  data:{},
 	  success: function(data){
 	  if(data)

@@ -51,6 +51,7 @@ function loadGroups()
 {
 	$.ajax({type:'GET',
 	  url: getHost()+"group/list",
+	  dataType: "jsonp"
 	  data:{"token":getLocalCache("token")},
 	  success: function(data){
 	  if(data)

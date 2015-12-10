@@ -48,6 +48,7 @@ function toLogin()
 	}
 	$.ajax({type:'POST',
 	  url: getHost()+"user/login",
+	  dataType: "jsonp",
 	  data:{"username":userid,"password":password},
 	  success: function(data){
 	  if(data)
