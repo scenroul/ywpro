@@ -4,6 +4,31 @@ function getHost()
 {
 	return "http://sa.cmcc.com/";
 }
+/*
+*获取url中参数
+*/
+function getRequest(key) 
+{
+    var url = location.search; //获取url中"?"符后的字串
+    var theRequest = new Object();
+    if (url.indexOf("?") != -1) {
+        var str = url.substr(1);
+        strs = str.split("&");
+        for (var i = 0; i < strs.length; i++) {
+            theRequest[strs[i].split("=")[0]] = decodeURI(strs[i].split("=")[1]);
+        }
+    }
+    return theRequest[key];
+
+}
+/*
+*url跳转
+*/
+function goUrl(_url)
+{
+	window.location.href=_url;
+}
+
 /**
  * 以下本地缓存
  */

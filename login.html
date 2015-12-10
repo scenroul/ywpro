@@ -52,13 +52,13 @@ function toLogin()
 	  success: function(data){
 	  if(data)
 	  {
-		var obj=eval(data);
+		var obj=data;
 		if(obj.code==0)
 		{
 			alert("登录成功");
 			setLocalCache("token", obj.data.token);
 			setLocalCache("userid",userid);
-			window.location.href="index.html";
+			window.location.href="my_menue.html?m=1";
 		}
 		else
 		{
@@ -69,7 +69,7 @@ function toLogin()
 	 error: function()
 	 {
 		alert("请求失败");
-		}
+	}
 	});
 }
 </script>

@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>-menue</title>
+<style type="text/css">
+body{font-size:13px;font-family:"微软雅黑";background-color:#fff;margin:0;}
+.i_menue{width:200px;height:470px;border:solid 2px #666;margin:0;float:left;background-color:#fff;}
+.menue_t{background-color:#666;color:#fff;padding:3px;}
+ul{margin:0;padding:0;}
+li.m_item{display:block;width:100%;height:32px;line-height:32px;text-align:center;border-top:solid 1px #ddd;list-style:none;
+font-weight:bold;font-size:16px;color:#666;cursor:pointer;}
+li.m_item:hover{background-color:#EFF9FB;}li.m_item_on{background-color:#eee;}
+</style>
+</head>
+<body>
+	<div class="i_menue" id="menue_box">
+			<div class="menue_t txt_center">当前组：<select id="my_groups" onchange="gChanged()">
+				<option value="0">暂无</option>
+			</select></div>
+			<ul>
+				<li class="m_item m_item_on">user</li>
+				<li class="m_item">job</li>
+				<li class="m_item">tast</li>
+				<li class="m_item">set</li>
+			</ul>
+	</div>
+</body>
+</html>
+<script src="plugins/jquery-1.9.1.js" type="text/javascript"></script>
+<script src="js/tools.js" type="text/javascript"></script>
+<script  type="text/javascript">
+var userid=getLocalCache("userid");
+var m=getRequest("m");
+jQuery(function()
+{
+	var i=0;
+	$(".m_item").each(function(){
+	$(this).attr("class","m_item");
+	if(i==m){$(this).attr("class","m_item m_item_on");}
+	i++;
+	});
+	//
+	loadGroups();
+});
+function gChanged()
+{
+
+}
+function loadGroups()
+{
+	$.ajax({type:'GET',
+	  url: getHost()+"group/list",
+	  data:{"token":getLocalCache("token")},
+	  success: function(data){
+	  if(data)
+	  {
+		alert(data);
+		var obj=eval(data);
+		if(obj.code==0)
+		{
+			
+		}
+		else
+		{
+			alert("获取组失败");
+		}
+	  }
+	 },
+	 error: function()
+	 {
+		alert("提交组请求失败");
+		}
+	});
+}
+</script>
