@@ -85,7 +85,8 @@ function toRegist()
 		if(obj.code==0)
 		{
 			alert("注册成功");
-			setLocalCache("token", obj.data.token);
+			var dobj=eval('(' + obj.data + ')');
+			setLocalCache("token",dobj.token);
 			setLocalCache("userid",userid);
 			window.location.href="my_menue.html?m=2";
 		}

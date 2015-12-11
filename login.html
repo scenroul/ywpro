@@ -52,14 +52,11 @@ function toLogin()
 	  success: function(data){
 	  if(data)
 	  {
-		
 		var obj=eval('(' + data + ')');
 		if(obj.code==0)
 		{
-			alert(obj.data);
 			var dobj=eval('(' + obj.data + ')');
-			alert("登录成功:"+dobj.token);
-			setLocalCache("token", obj.data.token);
+			setLocalCache("token",dobj.token);
 			setLocalCache("userid",userid);
 			window.location.href="my_menue.html?m=1";
 		}
