@@ -45,7 +45,7 @@ input.mini{width:60px;text-align:center;}
 function changeChanel(chanel)
 {
 	setLocalCache("chanel",chanel);
-	parrent.location.href="index.html";
+	window.parent.location.href="index.html";
 }
 var userid=getLocalCache("userid");
 var chanel=getLocalCache("chanel");
