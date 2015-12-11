@@ -15,7 +15,7 @@ li.m_item:hover{background-color:#EFF9FB;}li.m_item_on{background-color:#eee;}
 -ms-user-select:none;user-select:none;}
 .icon_add{position:absolute;display:block;width:30px;height:24px;line-height:24px;top:-1px;right:10px;
 color:#fff;font-size:24px;cursor:pointer;z-index:2;sle}
-.add_canv{height:50px;padding:20px 0 0 20px;background-color:#EFF9FB;display:block;}
+.add_canv{height:50px;padding:20px 0 0 20px;background-color:#EFF9FB;display:none;}
 input.mini{width:60px;text-align:center;}
 </style>
 </head>
@@ -62,8 +62,8 @@ function gChanged()
 function loadGroups()
 {
 	$.ajax({type:'GET',
-	  url: getHost()+"group/list",
-	  data:{"token":getLocalCache("token")},
+	  url: getHost()+"group/list?token="+getLocalCache("token"),
+	  data:{},
 	  success: function(data){
 	  if(data)
 	  {
@@ -99,8 +99,8 @@ function confirmAdd()
 	alert(getLocalCache("token"));
 	alert(EncodeForCN(gName));
 	$.ajax({type:'POST',
-	  url: getHost()+"group/create",
-	  data:{"token":getLocalCache("token"),"groupname":EncodeForCN(gName)},
+	  url: getHost()+"group/create?token="+getLocalCache("token"),
+	  data:{"groupname":EncodeForCN(gName)},
 	  success: function(data){
 	  if(data)
 	  {
