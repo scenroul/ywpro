@@ -67,12 +67,13 @@ function loadGroups()
 	  success: function(data){
 	  if(data)
 	  {
+		alert(data);
 		var obj=eval('(' + data + ')');
 		if(obj.code==0)
 		{
 			var dobj=eval('(' + obj.data + ')');
 			var groups=dobj.groupname;
-			//alert(groups);
+			alert(groups);
 		}
 		else
 		{
