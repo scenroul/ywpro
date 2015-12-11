@@ -22,7 +22,7 @@ input.mini{width:60px;text-align:center;}
 <body>
 	<div class="i_menue" id="menue_box">
 			<div class="menue_t txt_center">当前组：<select id="my_groups" onchange="gChanged()">
-				<option value="0">暂无</option>
+				<option value="0">空</option>
 			</select>
 			<div class="icon icon_add" onclick="openAddPan()">+</div>
 			</div>
@@ -31,10 +31,10 @@ input.mini{width:60px;text-align:center;}
 				<input type="button" id="toAdd" class="mini" value="添加" onclick="confirmAdd()"/>
 			</div>
 			<ul>
-				<li class="m_item m_item_on">user</li>
-				<li class="m_item">job</li>
-				<li class="m_item">tast</li>
-				<li class="m_item">set</li>
+				<li class="m_item m_item_on" onclick="changeChanel(0)">user</li>
+				<li class="m_item" onclick="changeChanel(0)">job</li>
+				<li class="m_item" onclick="changeChanel(0)">tast</li>
+				<li class="m_item" onclick="changeChanel(0)">set</li>
 			</ul>
 	</div>
 </body>
@@ -42,14 +42,20 @@ input.mini{width:60px;text-align:center;}
 <script src="plugins/jquery-1.9.1.js" type="text/javascript"></script>
 <script src="js/tools.js" type="text/javascript"></script>
 <script  type="text/javascript">
+function changeChanel(chanel)
+{
+	setLocalCache("chanel",chanel);
+	parrent.location.href="index.html";
+}
 var userid=getLocalCache("userid");
-var m=getRequest("m");
+var chanel=getLocalCache("chanel");
+if(isEmpty(chanel))chanel=0;
 jQuery(function()
 {
 	var i=0;
 	$(".m_item").each(function(){
 	$(this).attr("class","m_item");
-	if(i==m){$(this).attr("class","m_item m_item_on");}
+	if(i==chanel){$(this).attr("class","m_item m_item_on");}
 	i++;
 	});
 	//加载组list
@@ -57,7 +63,10 @@ jQuery(function()
 });
 function gChanged()
 {
-
+	var curGrp=$("#my_groups").val();
+	if(curGrp=="")return;
+	setLocalCache("group",curGrp);
+	//以下获取是否管理员权限...
 }
 function loadGroups()
 {
@@ -67,7 +76,6 @@ function loadGroups()
 	  success: function(data){
 	  if(data)
 	  {
-		alert(data);
 		var obj=eval('(' + data + ')');
 		if(obj.code==0)
 		{
@@ -102,19 +110,16 @@ function confirmAdd()
 	$(".add_canv").hide();
 	if(gName=="")return;
 	//请求创建新组
-	alert(getLocalCache("token"));
-	alert(EncodeForCN(gName));
 	$.ajax({type:'POST',
 	  url: getHost()+"group/create?token="+getLocalCache("token"),
 	  data:{"groupname":EncodeForCN(gName)},
 	  success: function(data){
 	  if(data)
 	  {
-		alert(data);
 		var obj=eval('(' + data + ')');
 		if(obj.code==0)
 		{
-			alert("添加成功");
+			//添加新组成功
 			loadGroups();
 		}
 		else
