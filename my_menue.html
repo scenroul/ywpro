@@ -98,7 +98,7 @@ function confirmAdd()
 	//请求创建新组
 	alert(getLocalCache("token"));
 	alert(EncodeForCN(gName));
-	$.ajax({type:'GET',
+	$.ajax({type:'POST',
 	  url: getHost()+"group/create",
 	  data:{"token":getLocalCache("token"),"groupname":EncodeForCN(gName)},
 	  success: function(data){
