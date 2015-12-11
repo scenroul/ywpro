@@ -55,7 +55,7 @@ function toLogin()
 		var obj=eval('(' + data + ')');
 		if(obj.code==0)
 		{
-			alert("登录成功");
+			alert("登录成功:"+obj.data.token);
 			setLocalCache("token", obj.data.token);
 			setLocalCache("userid",userid);
 			window.location.href="my_menue.html?m=1";

@@ -49,6 +49,7 @@ function gChanged()
 }
 function loadGroups()
 {
+	alert(getLocalCache("token"));
 	$.ajax({type:'GET',
 	  url: getHost()+"group/list",
 	  data:{"token":getLocalCache("token")},
