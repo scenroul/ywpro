@@ -72,8 +72,13 @@ function loadGroups()
 		if(obj.code==0)
 		{
 			var dobj=eval('(' + obj.data + ')');
-			var groups=dobj.groupname;
-			alert(groups);
+			var groups=DecodeForCN(dobj.groupname).split(";");
+			var options="";
+			for(var i=0;i<groups.length;i++)
+			{
+				options+="<option value='"+groups[i]+"'>"+groups[i]+"</option>";
+			}
+			$("#my_groups").html(options);
 		}
 		else
 		{
