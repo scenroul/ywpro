@@ -98,3 +98,14 @@ function isEmpty(para)
 	if(para==undefined||para==null||para=='null'||para=='undefined'||para=='')return true;
 	return false;
 }
+/**
+ * Êý¾Ý
+ */
+function EncodeForCN(str)
+{
+	return window.encodeURI(str);
+}
+function DecodeForCN(str)
+{
+	return window.decodeURI(str);
+}

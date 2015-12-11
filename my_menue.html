@@ -96,9 +96,11 @@ function confirmAdd()
 	$(".add_canv").hide();
 	if(gName=="")return;
 	//请求创建新组
+	alert(getLocalCache("token"));
+	alert(EncodeForCN(gName));
 	$.ajax({type:'GET',
 	  url: getHost()+"group/create",
-	  data:{"token":getLocalCache("token"),"groupname":gName},
+	  data:{"token":getLocalCache("token"),"groupname":EncodeForCN(gName)},
 	  success: function(data){
 	  if(data)
 	  {
