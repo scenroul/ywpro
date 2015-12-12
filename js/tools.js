@@ -113,8 +113,89 @@ function DecodeForCN(str)
 	return window.decodeURI(str);
 }
 /**
- * 以下关于弹窗
+ * 以下尺寸相关
  */
+function PageWidth()
+{
+	return parseInt($("body").css("width").replace("px",""));
+}
+function PageHeight()
+{
+	var bodyHeight=parseInt($("body").css("height").replace("px",""));
+	if(window.innerHeight==undefined)return bodyHeight;
+	if(bodyHeight>window.innerHeight)
+		return bodyHeight;
+	else
+		return window.innerHeight;
+}
+function windowHeight()
+{
+	if(window.innerHeight!= undefined)
+	{  
+        return window.innerHeight;  
+    }  
+    else
+	{  
+        var B= document.body, D= document.documentElement;  
+        return Math.min(D.clientHeight, B.clientHeight);  
+    }  
+}
+function getHeight(h)
+{
+	return Math.round(h*PageWidth()/1080);
+}
+function getScrollTop()
+{
+	var scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
+	return scrollTop;
+}
+/**
+ * 以下关于弹出层
+ */
+ function showBlack()
+{
+	if($("#blackCanva").length==0)
+	{
+		$("body").append("<div id='blackCanva'></div>");
+		$("#blackCanva").css({width:PageWidth()+"px",height:PageHeight()+60+"px"});
+	}
+	else;
+		$("#blackCanva").show();
+	
+}
+function hideBlack()
+{
+	if($("#blackCanva").length!=0)
+		$("#blackCanva").hide();
+}
+function showConfirm(text,onOk)
+{
+	showBlack();
+	if($("#dialog").length==0)
+	{
+		$("body").append("<div id='dialog'><div style='line-height:30px;margin-bottom:10px;text-align:center;' id='dialogtext'></div><div style='padding-left:30px;'><a class='tw_btn_light' id='btn_ok'>确定</a><a class='tw_btn_white' id='btn_no'>取消</a></div></div>");
+	}
+	else
+	{
+		$("#dialog").show();
+		$("#btn_ok").unbind();
+		$("#btn_no").unbind();
+	}
+	$("#btn_ok").bind("click",function(){
+			hideBlack();
+			$("#dialog").hide();
+			onOk();
+		});
+	$("#btn_no").bind("click",function(){
+			hideBlack();
+			$("#dialog").hide();
+		});	
+	$("#dialogtext").text(text);
+	var dialogHeight=parseInt($("#dialog").css("height").replace("px",""));
+	var leftSpace=(PageWidth()-300)/2;
+	var topSpace=(windowHeight()-dialogHeight)/2+getScrollTop();
+	$("#dialog").css({width:"300px",top:topSpace+"px",left:leftSpace+"px"});
+}
 function showMsg(text)
 {
 	if($("#msgbox").length==0)
