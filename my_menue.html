@@ -32,9 +32,9 @@ input.mini{width:60px;text-align:center;}
 			</div>
 			<ul>
 				<li class="m_item m_item_on" onclick="changeChanel(0)">user</li>
-				<li class="m_item" onclick="changeChanel(0)">job</li>
-				<li class="m_item" onclick="changeChanel(0)">tast</li>
-				<li class="m_item" onclick="changeChanel(0)">set</li>
+				<li class="m_item" onclick="changeChanel(1)">job</li>
+				<li class="m_item" onclick="changeChanel(2)">tast</li>
+				<li class="m_item" onclick="changeChanel(3)">set</li>
 			</ul>
 	</div>
 </body>
@@ -49,7 +49,7 @@ function changeChanel(chanel)
 }
 var userid=getLocalCache("userid");
 var chanel=getLocalCache("chanel");
-if(isEmpty(chanel))chanel=0;
+if(isEmpty(chanel))chanel=2;
 jQuery(function()
 {
 	var i=0;

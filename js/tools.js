@@ -105,7 +105,133 @@ function EncodeForCN(str)
 {
 	return window.encodeURI(str);
 }
+/**
+ * 解码中文
+ */
 function DecodeForCN(str)
 {
 	return window.decodeURI(str);
+}
+/**
+ * 以下关于弹窗
+ */
+function showMsg(text)
+{
+	if($("#msgbox").length==0)
+	{
+		$("body").append("<div id='msgbox' style='position: fixed;'><div id='curmsg'>"+text+"</div></div>");
+		
+	}
+	else
+	{
+		$("#curmsg").text(text);
+		$("#msgbox").show();
+	}
+	$("#msgbox").css({width:PageWidth()+"px",top:"0px"});
+	$("#msgbox").animate({opacity: '1'}, 350, "swing", function () {
+		setTimeout("msgOut()", 2000);
+		});
+}
+function showSucc(text)
+{
+	if($("#succbox").length==0)
+	{
+		$("body").append("<div id='succbox'><div id='curmsg_suc'>"+text+"</div></div>");
+		$("#succbox").css({width:PageWidth()+"px",top:"0px"});
+	}
+	else
+	{
+		$("#curmsg_suc").text(text);
+		$("#succbox").show();
+	}
+	$("#succbox").animate({opacity: '.8'}, 350, "swing", function () {
+		setTimeout("succOut()", 2000);
+		});
+}
+function msgOut()
+{
+	$("#msgbox").animate({opacity: '0.3'}, 350, "swing", function () {
+		$("#msgbox").hide();
+        });
+}
+function succOut()
+{
+	$("#succbox").animate({opacity: '0.3'}, 350, "swing", function () {
+		$("#succbox").hide();
+        });
+}
+function htmlWinUp(html,w,h,reFuns)
+{
+	showBlack();
+	if($("#htmlBox").length==0)
+	{
+		$("body").append("<div id='htmlBox'></div>");
+	}
+	else
+		$("#htmlBox").show();
+		
+	$("#htmlBox").html(html);
+		$(".closeBtn").each(function(index){
+			$("#close_"+index).unbind();
+			$("#close_"+index).bind("click",function(){
+				reFuns[index](index);
+				hideBlack();
+				$("#htmlBox").hide();
+			});
+		});
+	var leftSpace=(PageWidth()-w)/2;
+	var topSpace=(windowHeight()-h)/2;
+	$("#htmlBox").css({width:w+"px",height:h+"px",top:topSpace+"px",left:leftSpace+"px"});
+}
+function htmlElementWinUp($element,w,h,initFun,reFuns)
+{
+	if($element.length==0)return;
+	$element.show();
+	showBlack();
+	if($("#htmlBox").length==0)
+	{
+		$("body").append("<div id='htmlBox'></div>");
+	}
+	else
+		$("#htmlBox").show();
+	var leftSpace=(PageWidth()-w)/2;
+	var topSpace=(windowHeight()-h)/2+getScrollTop();
+	$("#htmlBox").css({width:w+"px",height:h+"px",top:topSpace+"px",left:leftSpace+"px"});
+	
+	$("#htmlBox").append($element.remove());
+	if(initFun!=null&&initFun!=undefined)initFun();
+	//绑定
+	$element.find(".tw_close_btn").each(function(index)
+	{
+		$element.find(".close_"+index).unbind();
+		$element.find(".close_"+index).bind("click",function(){
+			if(reFuns[index](index))
+			{
+				hideBlack();
+				$("body").append($element.remove());
+				$("#htmlBox").hide();
+				$element.hide();
+			}
+		});
+	});
+}
+function showElementAtMouse($element,initFun,reFuns,_x,_y)
+{
+	if($element.length==0)return;
+	$element.show();
+	$("body").append($element.remove());
+	$element.css({top:_y+"px",left:_x+"px"});
+	if(initFun!=null&&initFun!=undefined)initFun();
+	//绑定
+	$element.find(".tw_close_btn").each(function(index)
+	{
+		$element.find(".close_"+index).unbind();
+		$element.find(".close_"+index).bind("click",function(){
+			if(reFuns[index](index))
+			{
+				$("body").append($element.remove());
+				$element.hide();
+			}
+		});
+	});
 }

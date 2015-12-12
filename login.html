@@ -38,12 +38,12 @@ function toLogin()
 	var password=$("#l_form_item_pass").val();
 	if(userid=="")
 	{
-		alert("用户名不能为空");
+		showMsg("用户名不能为空");
 		return;
 	}
 	else if(password=="")
 	{
-		alert("密码不能为空");
+		showMsg("密码不能为空");
 		return;
 	}
 	$.ajax({type:'POST',
@@ -62,13 +62,13 @@ function toLogin()
 		}
 		else
 		{
-			alert("用户名或密码错误");
+			showMsg("用户名或密码错误");
 		}
 	  }
 	 },
 	 error: function()
 	 {
-		alert("请求失败");
+		showMsg("请求失败");
 	}
 	});
 }

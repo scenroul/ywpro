@@ -47,32 +47,32 @@ function toRegist()
 	var tel=$("#r_form_item_phone").val();
 	if(userid=="")
 	{
-		alert("用户名不能为空");
+		showMsg("用户名不能为空");
 		return;
 	}
 	else if(password=="")
 	{
-		alert("密码不能为空");
+		showMsg("密码不能为空");
 		return;
 	}
 	else if(email=="")
 	{
-		alert("邮箱地址不能为空");
+		showMsg("邮箱地址不能为空");
 		return;
 	}
 	else if(!CheckMail(email))
 	{
-		alert("邮箱地址格式错误");
+		showMsg("邮箱地址格式错误");
 		return;
 	}
 	else if(tel=="")
 	{
-		alert("手机号码不能为空");
+		showMsg("手机号码不能为空");
 		return;
 	}
 	else if(!validatemobile(tel))
 	{
-		alert("手机号码格式错误");
+		showMsg("手机号码格式错误");
 		return;
 	}
 	$.ajax({type:'POST',
@@ -84,7 +84,7 @@ function toRegist()
 		var obj=eval('(' + data + ')');
 		if(obj.code==0)
 		{
-			alert("注册成功");
+			showMsg("注册成功");
 			var dobj=eval('(' + obj.data + ')');
 			setLocalCache("token",dobj.token);
 			setLocalCache("userid",userid);
@@ -92,13 +92,13 @@ function toRegist()
 		}
 		else
 		{
-			alert("注册失败");
+			showMsg("注册失败");
 		}
 	  }
 	 },
 	 error: function()
 	 {
-		alert("提交请求失败");
+		showMsg("提交请求失败");
 		}
 	});
 }
