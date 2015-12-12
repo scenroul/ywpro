@@ -20,3 +20,19 @@ a:hover{color:#6cc96c;text-decoration:underline;}
 a:active{color:#6cc96c;text-decoration:none;}
 a:link.a_blue{color:#A8DBF0;}
 .txt_red{color:#ff3300;}
+/*对话*/
+#msgbox{position:absolute;width:100px;height:45px;line-height:45px;text-align:center;color:#fff;font-size:14px;
+font-weight:bold;left:0;top:60px;opacity:.3;z-index:101;}
+#curmsg{width:30%;margin:auto;background-color:#F76162;}
+#curmsg_suc{width:30%;margin:auto;background-color:#04BDF3;}
+#succbox{position:absolute;width:100px;height:45px;line-height:45px;text-align:center;color:#fff;font-size:13px;
+font-weight:bold;left:0;top:0;opacity:.9;z-index:102;}
+#htmlBox{position:absolute;z-index:101;top:0;left:0;width:100px;height:auto;overflow:hidden;min-height:50px;}
+.closeBtn{cursor:hand;}
+.tip{position:relative;display:block;overflow:visible;}
+.tip_box{position: absolute;z-index: 9;width: 68px;height: 30px;color: #fff;text-align: center;font-size: 12px;
+background-image: url(../img/tip.png);background-repeat: no-repeat;background-position: left 3px;}
+.inpic{position:relative;}
+.selectedGray{position:absolute;width:100px;height:100px;top:0;left:0;background-color:#000;opacity:.3;z-index:2;}
+.selectedIcon{position:absolute;width:100px;height:100px;top:0;left:0;background-color:#000;
+background-image: url(../img/icon_selected_white.png);background-repeat: no-repeat;background-position: center center;z-index:3;}
