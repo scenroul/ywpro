@@ -28,7 +28,7 @@
             </div>
             <div class="canv_line txt_center">
                 <label>用户名：</label>
-				<input type="text" id="up_pic_src" class="short" placeholder="标题/作者/摘要"/>
+				<input type="text" id="userid" class="short" placeholder="账号/邮箱/地址"/>
             </div>
             <div class="canv_line txt_center">
             	<a class="tw_btn_light btn_short tw_close_btn close_1">确认</a>
@@ -42,14 +42,53 @@
 <script src="js/tools.js" type="text/javascript"></script>
 <script  type="text/javascript">
 var userid=getLocalCache("userid");
-var yqFun=function(idx)
+var canvClose=function(idx)
 {
 	return true;
 }
+var yqFun=function(idx)
+{
+	var userid=$("#userid").val();
+	var group=getLocalCache("group");
+	if(userid=="")
+	{
+		showMsg("用户名不能为空");
+		return false;
+	}
+	else if(isEmpty(group))
+	{
+		showMsg("当前没有指定组，不能发起邀请");
+		return false;
+	}
+	$.ajax({type:'POST',
+	  url: getHost()+"group/attach?token="+getLocalCache("token"),
+	  data:{},
+	  success: function(data){
+	  if(data)
+	  {
+		var obj=eval('(' + data + ')');
+		if(obj.code==0)
+		{
+			showMsg("邀请已发出");
+			return true;
+		}
+		else
+		{
+			showMsg("发出邀请失败");
+			return false;
+		}
+	  }
+	 },
+	 error: function()
+	 {
+		showMsg("提交邀请失败");
+		return false;
+		}
+	});
+}
 function openYqPan()
 {
-	alert(1);
-	htmlElementWinUp($("#grpYq"),300,160,null,yqFun);
+	htmlElementWinUp($("#grpYq"),300,160,null,[canvClose,yqFun,canvClose]);
 }
 jQuery(function()
 {
