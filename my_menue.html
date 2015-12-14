@@ -5,45 +5,22 @@
 <title>-menue</title>
 <style type="text/css">
 body{font-size:13px;font-family:"微软雅黑";background-color:#fff;margin:0;}
-.i_menue{position:relative;width:200px;height:470px;border:solid 2px #666;margin:0;float:left;background-color:#fff;}
-.menue_t{position:relative;background-color:#666;color:#fff;padding:3px;}
-.menue_b{position:absolute;width:196px;height:30px;background-color:#666;color:#fff;padding:3px;left:0;bottom:0;z-index:2;}
+.i_menue{position:relative;width:200px;height:470px;margin:0;float:left;background-color:#fff;}
+
 ul{margin:0;padding:0;}
 li.m_item{display:block;width:100%;height:32px;line-height:32px;text-align:center;border-top:solid 1px #ddd;list-style:none;
 font-weight:bold;font-size:16px;color:#666;cursor:pointer;}
 li.m_item:hover{background-color:#EFF9FB;}li.m_item_on{background-color:#eee;}
-.icon{moz-user-select: -moz-none;-moz-user-select: none;-o-user-select:none;-khtml-user-select:none;-webkit-user-select:none;
--ms-user-select:none;user-select:none;}
-.icon_add{position:absolute;display:block;width:30px;height:24px;line-height:24px;top:-1px;right:10px;
-color:#fff;font-size:24px;cursor:pointer;z-index:2;}
-.icon_yq{position:absolute;display:block;width:55px;height:22px;line-height:22px;right:10px;bottom:5px;
-color:#666;cursor:pointer;background-color:#f1f1f1;text-align:center;z-index:2;}
-.icon_dele{position:absolute;display:block;width:55px;height:22px;line-height:22px;right:75px;bottom:5px;
-color:#666;cursor:pointer;background-color:#f1f1f1;text-align:center;z-index:2;}
-.add_canv{height:50px;padding:20px 0 0 20px;background-color:#EFF9FB;display:none;}
-input.mini{width:60px;text-align:center;}
 </style>
 </head>
 <body>
 	<div class="i_menue" id="menue_box">
-			<div class="menue_t txt_center">当前组：<select id="my_groups" onchange="gChanged()">
-				<option value="0">空</option>
-			</select>
-			<div class="icon icon_add" onclick="openAddPan()">+</div>
-			</div>
-			<div class='add_canv txt_center'>
-				<input type="text" id="newName" class="mini" value="" placeholder="组名"/>
-				<input type="button" id="toAdd" class="mini" value="添加" onclick="confirmAdd()"/>
-			</div>
 			<ul>
 				<li class="m_item m_item_on" onclick="changeChanel(0)">user</li>
 				<li class="m_item" onclick="changeChanel(1)">job</li>
 				<li class="m_item" onclick="changeChanel(2)">tast</li>
 				<li class="m_item" onclick="changeChanel(3)">set</li>
 			</ul>
-			<div class="menue_b txt_center"></div>
-			<div class="icon icon_dele">解散组</div>
-			<div class="icon icon_yq" onclick="openYqPan()">邀请</div>
 	</div>
 </body>
 </html>
@@ -53,7 +30,8 @@ input.mini{width:60px;text-align:center;}
 function changeChanel(chanel)
 {
 	setLocalCache("chanel",chanel);
-	window.parent.location.href="index.html";
+	if(chanel==0)window.parent.location.href="users.html";
+	else window.parent.location.href="index.html";
 }
 var userid=getLocalCache("userid");
 var chanel=getLocalCache("chanel");
@@ -66,85 +44,5 @@ jQuery(function()
 	if(i==chanel){$(this).attr("class","m_item m_item_on");}
 	i++;
 	});
-	//加载组list
-	loadGroups();
 });
-function gChanged()
-{
-	var curGrp=$("#my_groups").val();
-	if(curGrp=="")return;
-	setLocalCache("group",curGrp);
-	//以下获取是否管理员权限...
-}
-function loadGroups()
-{
-	$.ajax({type:'GET',
-	  url: getHost()+"group/list?token="+getLocalCache("token"),
-	  data:{},
-	  success: function(data){
-	  if(data)
-	  {
-		var obj=eval('(' + data + ')');
-		if(obj.code==0)
-		{
-			var dobj=eval('(' + obj.data + ')');
-			var groups=DecodeForCN(dobj.groupname).split(";");
-			var options="";
-			for(var i=0;i<groups.length;i++)
-			{
-				options+="<option value='"+groups[i]+"'>"+groups[i]+"</option>";
-			}
-			$("#my_groups").html(options);
-			gChanged();
-		}
-		else
-		{
-			alert("获取组失败");
-		}
-	  }
-	 },
-	 error: function()
-	 {
-		//alert("提交组请求失败");
-		}
-	});
-}
-function openAddPan()
-{
-	$(".add_canv").toggle();
-}
-function openYqPan()
-{
-	window.parent.openYqPan();
-}
-function confirmAdd()
-{
-	var gName=$("#newName").val();
-	$(".add_canv").hide();
-	if(gName=="")return;
-	//请求创建新组
-	$.ajax({type:'POST',
-	  url: getHost()+"group/create?token="+getLocalCache("token"),
-	  data:{"groupname":EncodeForCN(gName)},
-	  success: function(data){
-	  if(data)
-	  {
-		var obj=eval('(' + data + ')');
-		if(obj.code==0)
-		{
-			//添加新组成功
-			loadGroups();
-		}
-		else
-		{
-			alert("添加失败");
-		}
-	  }
-	 },
-	 error: function()
-	 {
-		//alert("提交添加请求失败");
-		}
-	});
-}
 </script>

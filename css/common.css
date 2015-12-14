@@ -21,6 +21,19 @@ border:solid 1px #ddd;text-align:center;font-size:16px;}
 /*index页面-----------------------------------------------------------------------------------------*/
 .i_content_main{height:600px;margin-top:86px;background-color:#EFF9FB;}
 .i_canvas{width:80%;height:470px;padding:10px;border:solid 2px #666;margin:20px 20px 0 0;float:right;background-color:#fff;}
-.f_menue{width:204px;height:474px;background-color:#eee;margin:20px 0 0 10px;float:left;}
+.f_menue{position:relative;width:204px;height:474px;background-color:#eee;margin:20px 0 0 10px;border:solid 2px #666;
+float:left;}
 .mf{border:none;width:204px;height:474px;}
+.menue_t{position:relative;background-color:#666;color:#fff;padding:3px;}
+.menue_b{position:absolute;width:200px;height:30px;background-color:#666;color:#fff;padding:3px;left:0;bottom:0;z-index:2;}
+.icon{moz-user-select: -moz-none;-moz-user-select: none;-o-user-select:none;-khtml-user-select:none;-webkit-user-select:none;
+-ms-user-select:none;user-select:none;}
+.icon_add{position:absolute;display:block;width:30px;height:24px;line-height:24px;top:-1px;right:10px;
+color:#fff;font-size:24px;cursor:pointer;z-index:2;}
+.icon_yq{position:absolute;display:block;width:55px;height:22px;line-height:22px;right:10px;bottom:3px;
+color:#666;cursor:pointer;background-color:#f1f1f1;text-align:center;z-index:2;}
+.icon_dele{position:absolute;display:block;width:55px;height:22px;line-height:22px;right:75px;bottom:3px;
+color:#666;cursor:pointer;background-color:#f1f1f1;text-align:center;z-index:2;}
+.add_canv{height:50px;padding:10px 0 0 20px;background-color:#EFF9FB;display:none;}
+input.mini{width:60px;text-align:center;}
 #grpYq{width:300px;height:160px;}
