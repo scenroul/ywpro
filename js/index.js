@@ -62,8 +62,7 @@ function loadGroups()
 			$("#my_groups").html(options);
 			if(hav==1)
 			{
-				alert("select:"+curGrp);
-				$("#my_groups").find("option[text='"+curGrp+"']").attr("selected",true);
+				$("#my_groups").find("option[value='"+curGrp+"']").attr("selected",true);
 			}
 				
 			else gChanged();
