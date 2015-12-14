@@ -91,13 +91,13 @@ function loadUsers(grp)
 function initUserList(list)
 {
 	var listHtml=
-	"<div class='tab_line line_t'><div class='cell cell_middle'>用户名</div><div class='cell cell_long'>电话</div><div class='cell cell_middle'>邮箱</div></div><div class='cell cell_long'>操作</div>";
+	"<div class='tab_line line_t'><div class='cell cell_middle'>用户名</div><div class='cell cell_long'>电话</div><div class='cell cell_middle'>邮箱</div><div class='cell cell_long'>操作</div></div>";
 	for(var u=0;u<list.length;u++)
 	{
 		var stl=u%2;
 		listHtml+="<div class='tab_line line_"+stl+"'><div class='cell cell_middle'>"+list[u].username+
 		"</div><div class='cell cell_long'>"+list[u].phone+"</div><div class='cell cell_middle'>"+list[u].email+
-		"</div></div><div class='cell cell_long'>&nbsp;</div>";
+		"</div><div class='cell cell_long'>&nbsp;</div></div>";
 	}
 	$("#user_list").html(listHtml);
 }
