@@ -60,6 +60,7 @@ jQuery(function()
 });
 function loadUsers(grp)
 {
+	$("#user_list").html(loadingText());
 	$.ajax({type:'GET',
 	  url: getHost()+"group/user?token="+getLocalCache("token"),
 	  data:{"groupname":grp},
@@ -70,21 +71,32 @@ function loadUsers(grp)
 		var obj=eval('(' + data + ')');
 		if(obj.code==0)
 		{
-			var dobj=eval('(' + obj.data + ')');
-			alert(dobj.length);
 			var jobj=JSON.parse(obj.data);
-			alert(jobj.length);
+			initUserList(jobj);
 		}
 		else
 		{
+			$("#user_list").html("");
 			showMsg("请求成员失败");
 		}
 	  }
 	 },
 	 error: function()
 	 {
+		$("#user_list").html("");
 		showMsg("提交请求失败");
 		}
 	});
+}
+function initUserList(list)
+{
+	var listHtml="<div class='tab_line line_t'><div class='cell_middle'>用户名</div><div class='cell_long'>电话</div><div class='cell_middle'>邮箱</div></div><div class='cell_long'>操作</div>";
+	for(var u=0;u<list.length;u++)
+	{
+		listHtml+="<div class='tab_line line_t'><div class='cell_middle'>"+list[u].username+
+		"</div><div class='cell_long'>"+list[u].phone+"</div><div class='cell_middle'>"+list[u].email+
+		"</div></div><div class='cell_long'>&nbsp;</div>";
+	}
+	$("#user_list").html(listHtml);
 }
 </script>

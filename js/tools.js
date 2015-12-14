@@ -316,6 +316,11 @@ function showElementAtMouse($element,initFun,reFuns,_x,_y)
 		});
 	});
 }
+/*加载中...*/
+function loadingText()
+{
+	return "<div style='width:200px;height:200px;line-height:200px;color:#ccc;margin:auto;text-align:center;'>数据加载中...</div>";
+}
 /*-----------------------------public para and functons-------------------------------*/
 var userid;
 jQuery(function()
@@ -354,6 +359,7 @@ function logOut()
 function gChanged()
 {
 	var curGrp=$("#my_groups").val();
+	alert("设置当前组："+curGrp);
 	setLocalCache("group",curGrp);
 	//以下获取是否管理员权限...
 }
@@ -371,6 +377,7 @@ function loadGroups()
 			var dobj=eval('(' + obj.data + ')');
 			var groups=dobj.groupname.split(";");
 			var options="",curGrp=getLocalCache("group");
+			alert("read:"+getLocalCache("group"));
 			for(var i=0;i<groups.length;i++)
 			{
 				if(groups[i]==curGrp)
