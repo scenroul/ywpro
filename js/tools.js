@@ -359,7 +359,6 @@ function logOut()
 function gChanged()
 {
 	var curGrp=$("#my_groups").val();
-	alert("设置当前组："+curGrp);
 	setLocalCache("group",curGrp);
 	//以下获取是否管理员权限...
 }
@@ -376,16 +375,16 @@ function loadGroups()
 		{
 			var dobj=eval('(' + obj.data + ')');
 			var groups=dobj.groupname.split(";");
-			var options="",curGrp=getLocalCache("group");
-			alert("read:"+getLocalCache("group"));
+			var options="",curGrp=getLocalCache("group"),hav=0;
 			for(var i=0;i<groups.length;i++)
 			{
-				if(groups[i]==curGrp)
-					options+="<option value='"+groups[i]+"' select='selected'>"+groups[i]+"</option>";
-				else 
-					options+="<option value='"+groups[i]+"'>"+groups[i]+"</option>";
+				if(groups[i]==curGrp)hav=1;
+				options+="<option value='"+groups[i]+"'>"+groups[i]+"</option>";
 			}
 			$("#my_groups").html(options);
+			if(hav==1)
+				$("#my_groups").find("option[text='"+curGrp+"']").attr("selected",true);
+			else gChanged();
 		}
 		else
 		{

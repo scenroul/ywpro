@@ -90,12 +90,14 @@ function loadUsers(grp)
 }
 function initUserList(list)
 {
-	var listHtml="<div class='tab_line line_t'><div class='cell_middle'>用户名</div><div class='cell_long'>电话</div><div class='cell_middle'>邮箱</div></div><div class='cell_long'>操作</div>";
+	var listHtml=
+	"<div class='tab_line line_t'><div class='cell cell_middle'>用户名</div><div class='cell cell_long'>电话</div><div class='cell cell_middle'>邮箱</div></div><div class='cell cell_long'>操作</div>";
 	for(var u=0;u<list.length;u++)
 	{
-		listHtml+="<div class='tab_line line_t'><div class='cell_middle'>"+list[u].username+
-		"</div><div class='cell_long'>"+list[u].phone+"</div><div class='cell_middle'>"+list[u].email+
-		"</div></div><div class='cell_long'>&nbsp;</div>";
+		var stl=u%2;
+		listHtml+="<div class='tab_line line_"+stl+"'><div class='cell cell_middle'>"+list[u].username+
+		"</div><div class='cell cell_long'>"+list[u].phone+"</div><div class='cell cell_middle'>"+list[u].email+
+		"</div></div><div class='cell cell_long'>&nbsp;</div>";
 	}
 	$("#user_list").html(listHtml);
 }
