@@ -21,7 +21,7 @@
 		</div>
 	</div>
 	<div class="footer">
-		<div class="selectSourceCanvas" id="twCanvas">
+		<div class="selectSourceCanvas" id="grpYq">
         	<div class="addMenuCanvas_top">
             	<div class="addMenuCanvas_t">邀请加入(组)</div>
                 <span class="icon icon_close tw_close_btn close_0"></span>
@@ -42,9 +42,14 @@
 <script src="js/tools.js" type="text/javascript"></script>
 <script  type="text/javascript">
 var userid=getLocalCache("userid");
+var yqFun=function(idx)
+{
+	return true;
+}
 function openYqPan()
 {
-	window.parent.openYqPan();
+	alert(1);
+	htmlElementWinUp($("#grpYq"),300,160,null,reFuns);
 }
 jQuery(function()
 {
