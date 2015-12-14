@@ -70,20 +70,20 @@ function loadUsers(grp)
 		var obj=eval('(' + data + ')');
 		if(obj.code==0)
 		{
-			showMsg("请求成功");
-			return true;
+			var dobj=eval('(' + obj.data + ')');
+			var jobj=JOSN.parse(obj.data);
+			alert(dobj.length);
+			alert(jobj.length);
 		}
 		else
 		{
-			showMsg("请求失败");
-			return false;
+			showMsg("请求成员失败");
 		}
 	  }
 	 },
 	 error: function()
 	 {
 		showMsg("提交请求失败");
-		return false;
 		}
 	});
 }

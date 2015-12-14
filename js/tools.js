@@ -354,7 +354,6 @@ function logOut()
 function gChanged()
 {
 	var curGrp=$("#my_groups").val();
-	if(curGrp=="")return;
 	setLocalCache("group",curGrp);
 	//以下获取是否管理员权限...
 }
@@ -371,13 +370,15 @@ function loadGroups()
 		{
 			var dobj=eval('(' + obj.data + ')');
 			var groups=DecodeForCN(dobj.groupname).split(";");
-			var options="";
+			var options="",curGrp=getLocalCache("group");
 			for(var i=0;i<groups.length;i++)
 			{
-				options+="<option value='"+groups[i]+"'>"+groups[i]+"</option>";
+				if(groups[i]==curGrp)
+					options+="<option value='"+groups[i]+"' select='selected'>"+groups[i]+"</option>";
+				else 
+					options+="<option value='"+groups[i]+"'>"+groups[i]+"</option>";
 			}
 			$("#my_groups").html(options);
-			gChanged();
 		}
 		else
 		{
