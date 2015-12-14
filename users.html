@@ -29,7 +29,7 @@
 			<div class="icon icon_dele">解散组</div>
 			<div class="icon icon_yq" onclick="openYqPan()">邀请</div>
 		</div>
-		<div class="i_canvas block_radius_max">
+		<div class="i_canvas block_radius_max" id="user_list">
 		</div>
 	</div>
 	<div class="footer">
@@ -71,8 +71,8 @@ function loadUsers(grp)
 		if(obj.code==0)
 		{
 			var dobj=eval('(' + obj.data + ')');
-			var jobj=JOSN.parse(obj.data);
 			alert(dobj.length);
+			var jobj=JSON.parse(obj.data);
 			alert(jobj.length);
 		}
 		else

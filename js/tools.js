@@ -369,7 +369,7 @@ function loadGroups()
 		if(obj.code==0)
 		{
 			var dobj=eval('(' + obj.data + ')');
-			var groups=DecodeForCN(dobj.groupname).split(";");
+			var groups=dobj.groupname.split(";");
 			var options="",curGrp=getLocalCache("group");
 			for(var i=0;i<groups.length;i++)
 			{
@@ -408,7 +408,7 @@ function confirmAdd()
 	//请求创建新组
 	$.ajax({type:'POST',
 	  url: getHost()+"group/create?token="+getLocalCache("token"),
-	  data:{"groupname":EncodeForCN(gName)},
+	  data:{"groupname":gName},
 	  success: function(data){
 	  if(data)
 	  {
