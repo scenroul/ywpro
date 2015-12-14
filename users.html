@@ -52,6 +52,7 @@
 </html>
 <script src="plugins/jquery-1.9.1.js" type="text/javascript"></script>
 <script src="js/tools.js" type="text/javascript"></script>
+<script src="js/index.js" type="text/javascript"></script>
 <script  type="text/javascript">
 jQuery(function()
 {
@@ -67,7 +68,6 @@ function loadUsers(grp)
 	  success: function(data){
 	  if(data)
 	  {
-		alert(data);
 		var obj=eval('(' + data + ')');
 		if(obj.code==0)
 		{
@@ -91,12 +91,12 @@ function loadUsers(grp)
 function initUserList(list)
 {
 	var listHtml=
-	"<div class='tab_line line_t'><div class='cell cell_middle'>用户名</div><div class='cell cell_long'>电话</div><div class='cell cell_middle'>邮箱</div><div class='cell cell_long'>操作</div></div>";
+	"<div class='tab_line line_t'><div class='cell cell_middle'>用户名</div><div class='cell cell_long'>电话</div><div class='cell cell_long'>邮箱</div><div class='cell cell_long'>操作</div></div>";
 	for(var u=0;u<list.length;u++)
 	{
 		var stl=u%2;
 		listHtml+="<div class='tab_line line_"+stl+"'><div class='cell cell_middle'>"+list[u].username+
-		"</div><div class='cell cell_long'>"+list[u].phone+"</div><div class='cell cell_middle'>"+list[u].email+
+		"</div><div class='cell cell_long'>"+list[u].phone+"</div><div class='cell cell_long'>"+list[u].email+
 		"</div><div class='cell cell_long'>&nbsp;</div></div>";
 	}
 	$("#user_list").html(listHtml);
