@@ -21,9 +21,9 @@
 		</div>
 	</div>
 	<div class="footer">
-		<div class="selectSourceCanvas" id="grpYq">
-        	<div class="addMenuCanvas_top">
-            	<div class="addMenuCanvas_t">邀请加入(组)</div>
+		<div class="tw_dialog_canv" id="grpYq" style="display:none;">
+        	<div class="dialog_canv_top">
+            	<div class="dialog_canv_t">邀请加入(组)</div>
                 <span class="icon icon_close tw_close_btn close_0"></span>
             </div>
             <div class="canv_line txt_center">
@@ -49,7 +49,7 @@ var yqFun=function(idx)
 function openYqPan()
 {
 	alert(1);
-	htmlElementWinUp($("#grpYq"),300,160,null,reFuns);
+	htmlElementWinUp($("#grpYq"),300,160,null,yqFun);
 }
 jQuery(function()
 {
