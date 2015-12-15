@@ -10,7 +10,7 @@ jQuery(function()
 function logOut()
 {
 	$.ajax({type:'GET',
-	  url: getHost()+"user/logout",
+	  url: getHost()+"user/logout?token="getLocalCache("token"),
 	  data:{},
 	  success: function(data){
 	  if(data)
@@ -18,8 +18,9 @@ function logOut()
 		var obj=eval('(' + data + ')');
 		if(obj.code==0)
 		{
-			setLocalCache("token",'null');
-			setLocalCache("userid",'null');
+			setLocalCache("token",'');
+			setLocalCache("userid",'');
+			setLocalCache("group",'');
 			window.location.href="login.html";
 		}
 		else
