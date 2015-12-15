@@ -31,6 +31,7 @@ function changeChanel(chanel)
 {
 	setLocalCache("chanel",chanel);
 	if(chanel==0)window.parent.location.href="users.html";
+	else if(chanel==1)window.parent.location.href="job.html";
 	else window.parent.location.href="index.html";
 }
 var userid=getLocalCache("userid");

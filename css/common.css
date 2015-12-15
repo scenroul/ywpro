@@ -5,7 +5,7 @@
 .l_content_main{height:500px;margin-top:86px;}
 .login_canvas{width:659px;height:438px;background-image:url(../img/login_canv.jpg);margin:40px auto 0 auto;}
 .login_btn{display:block;width:585px;height:80px;line-height:80px;font-size:22px;font-weight:bold;}
-.tw_close_btn{display:inline-block;}
+.tw_close_btn{display:inline-block;}.oper_btn{display:inline-block;}
 .l_form_item_user{margin-top:114px;}
 .l_form_item_pass{margin-top:34px;}
 .l_form_item_btn{margin-top:34px;}
@@ -37,3 +37,8 @@ color:#666;cursor:pointer;background-color:#f1f1f1;text-align:center;z-index:2;}
 .add_canv{height:50px;padding:10px 0 0 20px;background-color:#EFF9FB;display:none;}
 input.mini{width:60px;text-align:center;}
 #grpYq{width:300px;height:160px;}
+#jobNew{width:420px;height:520px;}
+.list_box{height:397px;background-color:#fff;}
+.page_line{height:30px;background-color:#fff;}
+.oper_line{height:35px;line-height:35px;padding:0 5px 0 5px;background-color:#fff;}
+.oper_btns{width:90%;margin:auto;font-size:22px;font-weight:bold;line-height:22px;}

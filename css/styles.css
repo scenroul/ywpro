@@ -12,12 +12,12 @@ text-decoration:none;cursor:pointer;}
 .tw_btn_white:hover{color:#666;font-weight:bold;border:solid 1px #ccc;background-color:#f1f1f1;
 text-decoration:none;cursor:pointer;}
 input.mini{width:80px;}input.short{width:120px;height:25px;line-height:25px;text-align:center;}
-input.long{width:200px;height:25px;line-height:25px;}
+input.long{width:200px;height:25px;line-height:25px;text-align:center;}
 .btn_mini{width:60px;}.btn_short{width:80px;height:22px;line-height:22px;margin-right:10px;}.btn_long{width:100%;}
 .block_radius_min{-moz-border-radius: 5px;-webkit-border-radius: 5px;border-radius:5px;}
 .block_radius_max{-moz-border-radius: 8px;-webkit-border-radius: 8px;border-radius:8px;}
 .block_center{margin:auto;}
-.txt_center{text-align:center;}
+.txt_center{text-align:center;}.txt_right{text-align:right;}
 /*
 a:hover 必须位于 a:link 和 a:visited 之后！！a:active 必须位于 a:hover 之后！！
 */
@@ -46,7 +46,7 @@ z-index:3;}.canv_line{margin:20px 0 10px 0;}
 .icon_close{display:block;width:40px;height:40px;background-image: url(../img/icon_close.png);background-repeat: no-repeat;
 background-position: center center;float:right;margin-right:10px;cursor:pointer;}
 .icon_close:hover{background-image: url(../img/icon_close_hover.png);}
-.tw_dialog_canv{background-color:#fff;border:solid 1px #F0F1F5;-moz-border-radius: 5px;
+.tw_dialog_canv{background-color:#fff;border:solid 1px #5BB85D;-moz-border-radius: 5px;
 -webkit-border-radius:5px;border-radius:5px;}
 .dialog_canv_top{background-color:#5BB85D;border-bottom:solid 1px #ededed;}
 .dialog_canv_t{width:110px;height:40px;float:left;line-height:40px;font-size:15px;text-align:center;color:#fff;}
@@ -55,5 +55,6 @@ background-position: center center;float:right;margin-right:10px;cursor:pointer;
 background-repeat: no-repeat;padding-top:41px;padding-left:30px;paddind-right:30px;z-index:9;}
 .mini_canv input{width:230px;height:30px;line-height:30px;}.tb_line{border-bottom:solid 1px #ddd;}
 .line_t{background-color:#666;color:#fff;}.line_0{background-color:#f5f5f5;}.line_1{background-color:#f0f0f0;}
+.line_0:hover,line_1:hover{background-color:#EFF9FB;}
 .cell{float:left;line-height:25px;padding:5px;}.cell_noborder{border:none;}.cell_mini{width:40px;}
 .cell_short{width:60px;}.cell_middle{width:100px;}.cell_long{width:150px;}.cell_super{width:200px;}
