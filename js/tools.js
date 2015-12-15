@@ -1,15 +1,15 @@
 /* Javascript Document create by tw 2015-12-8*/
-/*ÒÔÏÂ½Ó¿ÚÓòÅäÖÃ*/
+/*ä»¥ä¸‹æ¥å£åŸŸé…ç½®*/
 function getHost()
 {
 	return "http://sa.cmcc.com/";
 }
 /*
-*»ñÈ¡urlÖĞ²ÎÊı
+*è·å–urlä¸­å‚æ•°
 */
 function getRequest(key) 
 {
-    var url = location.search; //»ñÈ¡urlÖĞ"?"·ûºóµÄ×Ö´®
+    var url = location.search; //è·å–urlä¸­"?"ç¬¦åçš„å­—ä¸²
     var theRequest = new Object();
     if (url.indexOf("?") != -1) {
         var str = url.substr(1);
@@ -22,7 +22,7 @@ function getRequest(key)
 
 }
 /*
-*urlÌø×ª
+*urlè·³è½¬
 */
 function goUrl(_url)
 {
@@ -30,7 +30,7 @@ function goUrl(_url)
 }
 
 /**
- * ÒÔÏÂ±¾µØ»º´æ
+ * ä»¥ä¸‹æœ¬åœ°ç¼“å­˜
  */
 function getLocalCache(key) 
 {
@@ -68,14 +68,14 @@ function clearLocalCache()
         storage.clear();
     }
 }
-/*ÓÊÏäµØÖ·Ğ£Ñé*/
+/*é‚®ç®±åœ°å€æ ¡éªŒ*/
 function CheckMail(mail) 
 {
  var filter  = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
  if (filter.test(mail)) return true;
  else return false;
 }
-/*µç»°ºÅÂëĞ£Ñé*/
+/*ç”µè¯å·ç æ ¡éªŒ*/
 function validatemobile(mobile) 
 {
 	var isMobile = /^1(3[0-9]|5[0-35-9]|8[025-9])\d{8}$/;
@@ -92,28 +92,28 @@ function validatemobile(mobile)
 		return true;
 	}
 }
-/*ÊÇ·ñÎ´¶¨Òå»òÎª¿Õ*/
+/*æ˜¯å¦æœªå®šä¹‰æˆ–ä¸ºç©º*/
 function isEmpty(para)
 {
 	if(para==undefined||para==null||para=='null'||para=='undefined'||para=='')return true;
 	return false;
 }
 /**
- * Êı¾İ
+ * æ•°æ®
  */
 function EncodeForCN(str)
 {
 	return window.encodeURI(str);
 }
 /**
- * ½âÂëÖĞÎÄ
+ * è§£ç ä¸­æ–‡
  */
 function DecodeForCN(str)
 {
 	return window.decodeURI(str);
 }
 /**
- * ÒÔÏÂ³ß´çÏà¹Ø
+ * ä»¥ä¸‹å°ºå¯¸ç›¸å…³
  */
 function PageWidth()
 {
@@ -150,7 +150,7 @@ function getScrollTop()
 	return scrollTop;
 }
 /**
- * ÒÔÏÂ¹ØÓÚµ¯³ö²ã
+ * ä»¥ä¸‹å…³äºå¼¹å‡ºå±‚
  */
  function showBlack()
 {
@@ -173,7 +173,7 @@ function showConfirm(text,onOk)
 	showBlack();
 	if($("#dialog").length==0)
 	{
-		$("body").append("<div id='dialog'><div style='line-height:30px;margin-bottom:10px;text-align:center;' id='dialogtext'></div><div style='padding-left:30px;'><a class='tw_btn_light' id='btn_ok'>È·¶¨</a><a class='tw_btn_white' id='btn_no'>È¡Ïû</a></div></div>");
+		$("body").append("<div id='dialog'><div style='line-height:30px;margin-bottom:10px;text-align:center;' id='dialogtext'></div><div style='padding-left:30px;'><a class='tw_btn_light' id='btn_ok'>ç¡®å®š</a><a class='tw_btn_white' id='btn_no'>å–æ¶ˆ</a></div></div>");
 	}
 	else
 	{
@@ -281,7 +281,7 @@ function htmlElementWinUp($element,w,h,initFun,reFuns)
 	
 	$("#htmlBox").append($element.remove());
 	if(initFun!=null&&initFun!=undefined)initFun();
-	//°ó¶¨
+	//ç»‘å®š
 	$element.find(".tw_close_btn").each(function(index)
 	{
 		$element.find(".close_"+index).unbind();
@@ -303,7 +303,7 @@ function showElementAtMouse($element,initFun,reFuns,_x,_y)
 	$("body").append($element.remove());
 	$element.css({top:_y+"px",left:_x+"px"});
 	if(initFun!=null&&initFun!=undefined)initFun();
-	//°ó¶¨
+	//ç»‘å®š
 	$element.find(".tw_close_btn").each(function(index)
 	{
 		$element.find(".close_"+index).unbind();
@@ -316,8 +316,8 @@ function showElementAtMouse($element,initFun,reFuns,_x,_y)
 		});
 	});
 }
-/*¼ÓÔØÖĞ...*/
+/*åŠ è½½ä¸­...*/
 function loadingText()
 {
-	return "<div style='width:200px;height:200px;line-height:200px;color:#ccc;margin:auto;text-align:center;'>Êı¾İ¼ÓÔØÖĞ...</div>";
+	return "<div style='width:200px;height:200px;line-height:200px;color:#ccc;margin:auto;text-align:center;'>æ•°æ®åŠ è½½ä¸­...</div>";
 }

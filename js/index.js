@@ -24,13 +24,13 @@ function logOut()
 		}
 		else
 		{
-			showMsg("ÍË³öÊ§°Ü");
+			showMsg("é€€å‡ºå¤±è´¥");
 		}
 	  }
 	 },
 	 error: function()
 	 {
-		showMsg("Ìá½»ÇëÇóÊ§°Ü");
+		showMsg("æäº¤è¯·æ±‚å¤±è´¥");
 		}
 	});
 }
@@ -38,7 +38,7 @@ function gChanged()
 {
 	var curGrp=$("#my_groups").val();
 	setLocalCache("group",curGrp);
-	//ÒÔÏÂ»ñÈ¡ÊÇ·ñ¹ÜÀíÔ±È¨ÏŞ...
+	//ä»¥ä¸‹è·å–æ˜¯å¦ç®¡ç†å‘˜æƒé™...
 }
 function loadGroups()
 {
@@ -69,13 +69,13 @@ function loadGroups()
 		}
 		else
 		{
-			alert("»ñÈ¡×éÊ§°Ü");
+			alert("è·å–ç»„å¤±è´¥");
 		}
 	  }
 	 },
 	 error: function()
 	 {
-		//alert("Ìá½»×éÇëÇóÊ§°Ü");
+		//alert("æäº¤ç»„è¯·æ±‚å¤±è´¥");
 		}
 	});
 }
@@ -92,7 +92,7 @@ function confirmAdd()
 	var gName=$("#newName").val();
 	$(".add_canv").hide();
 	if(gName=="")return;
-	//ÇëÇó´´½¨ĞÂ×é
+	//è¯·æ±‚åˆ›å»ºæ–°ç»„
 	$.ajax({type:'POST',
 	  url: getHost()+"group/create?token="+getLocalCache("token"),
 	  data:{"groupname":gName},
@@ -102,18 +102,18 @@ function confirmAdd()
 		var obj=eval('(' + data + ')');
 		if(obj.code==0)
 		{
-			//Ìí¼ÓĞÂ×é³É¹¦
+			//æ·»åŠ æ–°ç»„æˆåŠŸ
 			loadGroups();
 		}
 		else
 		{
-			alert("Ìí¼ÓÊ§°Ü");
+			alert("æ·»åŠ å¤±è´¥");
 		}
 	  }
 	 },
 	 error: function()
 	 {
-		//alert("Ìá½»Ìí¼ÓÇëÇóÊ§°Ü");
+		//alert("æäº¤æ·»åŠ è¯·æ±‚å¤±è´¥");
 		}
 	});
 }
@@ -127,12 +127,12 @@ var yqFun=function(idx)
 	var group=getLocalCache("group");
 	if(userid=="")
 	{
-		showMsg("ÓÃ»§Ãû²»ÄÜÎª¿Õ");
+		showMsg("ç”¨æˆ·åä¸èƒ½ä¸ºç©º");
 		return false;
 	}
 	else if(isEmpty(group))
 	{
-		showMsg("µ±Ç°Ã»ÓĞÖ¸¶¨×é£¬²»ÄÜ·¢ÆğÑûÇë");
+		showMsg("å½“å‰æ²¡æœ‰æŒ‡å®šç»„ï¼Œä¸èƒ½å‘èµ·é‚€è¯·");
 		return false;
 	}
 	$.ajax({type:'POST',
@@ -144,19 +144,19 @@ var yqFun=function(idx)
 		var obj=eval('(' + data + ')');
 		if(obj.code==0)
 		{
-			showMsg("ÑûÇëÒÑ·¢³ö");
+			showMsg("é‚€è¯·å·²å‘å‡º");
 			return true;
 		}
 		else
 		{
-			showMsg("·¢³öÑûÇëÊ§°Ü");
+			showMsg("å‘å‡ºé‚€è¯·å¤±è´¥");
 			return false;
 		}
 	  }
 	 },
 	 error: function()
 	 {
-		showMsg("Ìá½»ÑûÇëÊ§°Ü");
+		showMsg("æäº¤é‚€è¯·å¤±è´¥");
 		return false;
 		}
 	});
