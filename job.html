@@ -52,7 +52,10 @@
             </div>
 			<div class="canv_line txt_center">
 				<div class="tw_half_min tw_f_l txt_right"><label>groupname:</label></div>
-				<div class="tw_half_max tw_f_r"><input type="text" id="groupname" class="long" placeholder="groupname"/></div>
+				<div class="tw_half_max tw_f_r">
+				<select id="groupname" class="grp_for_job long">
+				</select>
+				</div>
             </div>
 			<div class="canv_line txt_center">
 				<div class="tw_half_min tw_f_l txt_right"><label>evn:</label></div>
@@ -92,13 +95,144 @@
 <script  type="text/javascript">
 jQuery(function()
 {
+	loadJobs();
 });
 var newJobFun=function(idx)
 {
-	return true;
+	var jobname=$("#jobname").val();
+	var groupname=$("#groupname").val();
+	var evn=$("#evn").val();
+	var ssh_user=$("#ssh_user").val();
+	var ssh_host=$("#ssh_host").val();
+	var ssh_port=$("#ssh_port").val();
+	var command=$("#command").val();
+	var discription=$("#discription").val();
+	if(jobname=="")
+	{
+		showMsg("need jobname");
+		return false;
+	}
+	else if(groupname=="")
+	{
+		showMsg("need groupname");
+		return false;
+	}
+	else if(evn=="")
+	{
+		showMsg("need evn");
+		return false;
+	}
+	else if(ssh_user=="")
+	{
+		showMsg("need ssh_user");
+		return false;
+	}
+	else if(ssh_host=="")
+	{
+		showMsg("need ssh_host");
+		return false;
+	}
+	else if(ssh_port=="")
+	{
+		showMsg("need ssh_port");
+		return false;
+	}
+	else if(command=="")
+	{
+		showMsg("need command");
+		return false;
+	}
+	else if(discription=="")
+	{
+		showMsg("need discription");
+		return false;
+	}
+	//ajax submit
+	$.ajax({type:'POST',
+	  url: getHost()+"job/create?token="+getLocalCache("token"),
+	  data:{
+	  "jobname":jobname,
+	  "groupname":groupname,
+	  "evn":evn,
+	  "ssh_user":ssh_user,
+	  "ssh_host":ssh_host,
+	  "ssh_port":ssh_port,
+	  "command":command,
+	  "discription":discription
+	  },
+	  success: function(data){
+	  if(data)
+	  {
+		var obj=eval('(' + data + ')');
+		if(obj.code==0)
+		{
+			//New job succ
+			loadJobs();
+			return true;
+		}
+		else
+		{
+			showMsg("New Job failed");
+			return false;
+		}
+	  }
+	 },
+	 error: function()
+	 {
+		showMsg("submit failed");
+		return false;
+		}
+	});
 }
 function openJobCanv()
 {
 	htmlElementWinUp($("#jobNew"),420,520,null,[canvClose,newJobFun,canvClose]);
+}
+function loadJobs(grp)
+{
+	$("#job_list").html(loadingText());
+	$.ajax({type:'GET',
+	  url: getHost()+"job/list?token="+getLocalCache("token"),
+	  data:{"groupname":grp},
+	  success: function(data){
+	  if(data)
+	  {
+		alert(data);
+		var obj=eval('(' + data + ')');
+		if(obj.code==0)
+		{
+			var jobj=JSON.parse(obj.data);
+			initJobList(jobj);
+		}
+		else
+		{
+			$("#job_list").html("");
+			showMsg("请求Job失败");
+		}
+	  }
+	 },
+	 error: function()
+	 {
+		$("#job_list").html("");
+		showMsg("提交Job请求失败");
+		}
+	});
+}
+function initJobList(list)
+{
+	return;
+	var listHtml=
+	"<div class='tb_line line_t'><div class='cell cell_mini'><input type='checkbox' id='line_check' onclick='checkAll(this)'/></div>"+
+	"<div class='cell  cell_middle'>用户名</div><div class='cell cell_long'>电话</div><div class='cell cell_long'>邮箱</div>"+
+	"<div class='cell cell_long'>操作</div></div>";
+	for(var u=0;u<list.length;u++)
+	{
+		var stl=u%2;
+		listHtml+="<div class='tb_line line_"+stl+
+		"'><div class='cell cell_mini'><input type='checkbox' class='line_check'/></div><div class='cell  cell_middle'>"+
+		list[u].username+"</div><div class='cell cell_long'>"+list[u].phone+"</div><div class='cell cell_long'>"+
+		list[u].email+"</div><div class='cell cell_long'>&nbsp;</div></div>";
+	}
+	$("#job_list").html(listHtml);
 }
 </script>
