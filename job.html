@@ -51,15 +51,8 @@
 				<div class="tw_half_max tw_f_r"><input type="text" id="jobname" class="long" placeholder="jobname"/></div>
             </div>
 			<div class="canv_line txt_center">
-				<div class="tw_half_min tw_f_l txt_right"><label>groupname:</label></div>
-				<div class="tw_half_max tw_f_r">
-				<select id="groupname" class="grp_for_job long">
-				</select>
-				</div>
-            </div>
-			<div class="canv_line txt_center">
-				<div class="tw_half_min tw_f_l txt_right"><label>evn:</label></div>
-				<div class="tw_half_max tw_f_r"><input type="text" id="evn" class="long" placeholder="evn"/></div>
+				<div class="tw_half_min tw_f_l txt_right"><label>env:</label></div>
+				<div class="tw_half_max tw_f_r"><input type="text" id="env" class="long" placeholder="env"/></div>
             </div>
 			<div class="canv_line txt_center">
 				<div class="tw_half_min tw_f_l txt_right"><label>ssh_user:</label></div>
@@ -100,8 +93,7 @@ jQuery(function()
 var newJobFun=function(idx)
 {
 	var jobname=$("#jobname").val();
-	var groupname=$("#groupname").val();
-	var evn=$("#evn").val();
+	var env=$("#env").val();
 	var ssh_user=$("#ssh_user").val();
 	var ssh_host=$("#ssh_host").val();
 	var ssh_port=$("#ssh_port").val();
@@ -110,11 +102,6 @@ var newJobFun=function(idx)
 	if(jobname=="")
 	{
 		showMsg("need jobname");
-		return false;
-	}
-	else if(groupname=="")
-	{
-		showMsg("need groupname");
 		return false;
 	}
 	else if(evn=="")
@@ -152,8 +139,8 @@ var newJobFun=function(idx)
 	  url: getHost()+"job/create?token="+getLocalCache("token"),
 	  data:{
 	  "jobname":jobname,
-	  "groupname":groupname,
-	  "evn":evn,
+	  "groupname":getLocalCache("group"),
+	  "env":env,
 	  "ssh_user":ssh_user,
 	  "ssh_host":ssh_host,
 	  "ssh_port":ssh_port,
@@ -167,7 +154,7 @@ var newJobFun=function(idx)
 		if(obj.code==0)
 		{
 			//New job succ
-			loadJobs();
+			loadJobs(getLocalCache("group"));
 			return true;
 		}
 		else

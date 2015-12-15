@@ -61,10 +61,6 @@ function loadGroups()
 				options+="<option value='"+groups[i]+"'>"+groups[i]+"</option>";
 			}
 			$("#my_groups").html(options);
-			if($(".grp_for_job").length>0)
-			{
-				$(".grp_for_job").html(options);
-			}
 			if(hav==1)
 			{
 				$("#my_groups").find("option[value='"+curGrp+"']").attr("selected",true);
