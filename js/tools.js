@@ -321,8 +321,9 @@ function loadingText()
 {
 	return "<div style='width:200px;height:200px;line-height:200px;color:#ccc;margin:auto;text-align:center;'>数据加载中...</div>";
 }
-function checkAll()
+function checkAll(element)
 {
-	alert($("input[id='line_check']").attr("checked"));
+	alert($("input[id='line_check']"));
+	alert($(element).attr("checked"));
 	$("input[class='line_check']").attr("checked",$("input[id='line_check']").attr("checked")==true);
 }

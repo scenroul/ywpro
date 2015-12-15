@@ -91,7 +91,7 @@ function loadUsers(grp)
 function initUserList(list)
 {
 	var listHtml=
-	"<div class='tb_line line_t'><div class='cell cell_mini'><input type='checkbox' id='line_check' onclick='checkAll()'/></div>"+
+	"<div class='tb_line line_t'><div class='cell cell_mini'><input type='checkbox' id='line_check' onclick='checkAll(this)'/></div>"+
 	"<div class='cell  cell_middle'>用户名</div><div class='cell cell_long'>电话</div><div class='cell cell_long'>邮箱</div>"+
 	"<div class='cell cell_long'>操作</div></div>";
 	for(var u=0;u<list.length;u++)
