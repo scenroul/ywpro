@@ -323,7 +323,7 @@ function loadingText()
 }
 function checkAll()
 {
-	if($("input[class='line_check']").attr("checked")=="checked")
+	if($("input[class='line_check']").attr("checked")==true)
 		$("input[class='line_check']").attr("checked",false);
 	else $("input[class='line_check']").attr("checked",true);
 }
