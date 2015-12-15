@@ -10,7 +10,7 @@ jQuery(function()
 function logOut()
 {
 	$.ajax({type:'GET',
-	  url: getHost()+"user/logout?token="getLocalCache("token"),
+	  url: getHost()+"user/logout?token="+getLocalCache("token"),
 	  data:{},
 	  success: function(data){
 	  if(data)
