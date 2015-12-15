@@ -68,7 +68,6 @@ function loadUsers(grp)
 	  success: function(data){
 	  if(data)
 	  {
-		alert(data);
 		var obj=eval('(' + data + ')');
 		if(obj.code==0)
 		{
@@ -91,7 +90,7 @@ function loadUsers(grp)
 }
 function initUserList(list)
 {
-	var listHtml=<
+	var listHtml=
 	"<div class='tb_line line_t'><div class='cell cell_mini'><input type='checkbox' class='line_check' onclick='checkAll()' />全选</div>"+
 	"<div class='cell  cell_middle'>用户名</div><div class='cell cell_long'>电话</div><div class='cell cell_long'>邮箱</div>"+
 	"<div class='cell cell_long'>操作</div></div>";
