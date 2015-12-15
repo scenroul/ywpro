@@ -323,7 +323,5 @@ function loadingText()
 }
 function checkAll(element)
 {
-	alert($("input[id='line_check']"));
-	alert($(element).attr("checked"));
-	$("input[class='line_check']").attr("checked",$("input[id='line_check']").attr("checked")==true);
+	$("input[class='line_check']").attr("checked",$(element).prop("checked")==true);
 }
