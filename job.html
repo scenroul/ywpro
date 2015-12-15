@@ -71,8 +71,8 @@
 				<div class="tw_half_max tw_f_r"><input type="text" id="command" class="long" placeholder="command"/></div>
             </div>
 			<div class="canv_line txt_center">
-				<div class="tw_half_min tw_f_l txt_right"><label>discription:</label></div>
-				<div class="tw_half_max tw_f_r"><input type="text" id="discription" class="long" placeholder="discription"/></div>
+				<div class="tw_half_min tw_f_l txt_right"><label>description:</label></div>
+				<div class="tw_half_max tw_f_r"><input type="text" id="description" class="long" placeholder="description"/></div>
             </div>
             <div class="canv_line txt_center">
             	<a class="tw_btn_light btn_short tw_close_btn close_1">确认</a>
@@ -98,7 +98,7 @@ var newJobFun=function(idx)
 	var ssh_host=$("#ssh_host").val();
 	var ssh_port=$("#ssh_port").val();
 	var command=$("#command").val();
-	var discription=$("#discription").val();
+	var description=$("#description").val();
 	if(jobname=="")
 	{
 		showMsg("need jobname");
@@ -129,9 +129,9 @@ var newJobFun=function(idx)
 		showMsg("need command");
 		return false;
 	}
-	else if(discription=="")
+	else if(description=="")
 	{
-		showMsg("need discription");
+		showMsg("need description");
 		return false;
 	}
 	//ajax submit
@@ -145,7 +145,7 @@ var newJobFun=function(idx)
 	  "ssh_host":ssh_host,
 	  "ssh_port":ssh_port,
 	  "command":command,
-	  "discription":discription
+	  "description":description
 	  },
 	  success: function(data){
 	  if(data)
