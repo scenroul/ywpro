@@ -201,6 +201,8 @@ function loadJobs(grp)
 		if(obj.code==0)
 		{
 			var jobj=eval('(' +obj.data+ ')');
+			alert(jobj);
+			alert(jobj.job.length);
 			var list=JSON.parse(jobj.job);
 			initJobList(list);
 		}
