@@ -13,7 +13,7 @@ text-decoration:none;cursor:pointer;}
 text-decoration:none;cursor:pointer;}
 input.mini{width:80px;}input.short{width:120px;height:25px;line-height:25px;text-align:center;}
 input.long{width:200px;height:25px;line-height:25px;text-align:center;}
-.btn_mini{width:60px;}.btn_short{width:80px;height:22px;line-height:22px;margin-right:10px;}.btn_long{width:100%;}
+.btn_mini{width:60px;}.btn_short{width:80px;}.btn_long{width:100%;}
 .block_radius_min{-moz-border-radius: 5px;-webkit-border-radius: 5px;border-radius:5px;}
 .block_radius_max{-moz-border-radius: 8px;-webkit-border-radius: 8px;border-radius:8px;}
 .block_center{margin:auto;}

@@ -230,7 +230,7 @@ function initJobList(list)
 		"' class='cell  cell_middle'>"+list[u].jobname+"</div><div id='opt_"+u+"' class='cell cell_middle'>"+
 		list[u].options+"</div><div id='env_"+u+"' class='cell cell_long'>"+
 		list[u].env+"</div><div class='cell cell_long'><select id='s_"+u+"' onchange='job_grp("+u+")'>"+
-		$("#my_groups").html()+"<option value='0'>detach</option></select></div><div class='cell cell_long'><a onclic='goAct("+
+		$("#my_groups").html()+"<option value='0'>detach</option></select></div><div class='cell cell_long'><a onclick='goAct("+
 		u+")' class='tw_btn_white btn_mini btn_run'>go</a></div></div>";
 	}
 	$("#job_list").html(listHtml);
