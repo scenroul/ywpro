@@ -275,7 +275,6 @@ function job_grp(u)
 }
 function goAct(u)
 {
-	alert(u);
 	var grp=getLocalCache("group");
 	var env=$("#env_"+u).text();
 	var jname=$("#jname_"+u).text();
@@ -284,7 +283,7 @@ function goAct(u)
 	  "env":env,
 	  "jobname":jname,
 	  "options":opt};
-	  alert(JSON.stringify(_data));
+	  //alert(JSON.stringify(_data));
 	$.ajax({type:'GET',
 	  url: getHost()+"job/action?token="+getLocalCache("token"),
 	  data:_data,
