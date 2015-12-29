@@ -221,15 +221,88 @@ function initJobList(list)
 	var listHtml=
 	"<div class='tb_line line_t'><div class='cell cell_mini'><input type='checkbox' id='line_check' onclick='checkAll(this)'/></div>"+
 	"<div class='cell  cell_middle'>Jobname</div><div class='cell cell_middle'>options</div><div class='cell cell_long'>env</div>"+
-	"<div class='cell cell_long'>操作</div></div>";
+	"<div class='cell cell_long'>group</div><div class='cell cell_long'>action</div></div>";
 	for(var u=0;u<list.length;u++)
 	{
 		var stl=u%2;
 		listHtml+="<div class='tb_line line_"+stl+
-		"'><div class='cell cell_mini'><input type='checkbox' class='line_check'/></div><div class='cell  cell_middle'>"+
-		list[u].jobname+"</div><div class='cell cell_middle'>"+list[u].options+"</div><div class='cell cell_long'>"+
-		list[u].env+"</div><div class='cell cell_long'>&nbsp;</div></div>";
+		"'><div class='cell cell_mini'><input type='checkbox' class='line_check'/></div><div id='jname_"+u+
+		"' class='cell  cell_middle'>"+list[u].jobname+"</div><div id='opt_"+u+"' class='cell cell_middle'>"+
+		list[u].options+"</div><div id='env_"+u+"' class='cell cell_long'>"+
+		list[u].env+"</div><div class='cell cell_long'><select id='s_"+u+"' onchange='job_grp("+u+")'>"+
+		$("#my_groups").html()+"<option value='0'>detach</option></select></div><div class='cell cell_long'><a onclic='goAct("+
+		u+")' class='tw_btn_white btn_short'>Go</a></div></div>";
 	}
 	$("#job_list").html(listHtml);
+}
+function job_grp(u)
+{
+	var tgtGrp=$("#s_"+u).val();
+	showMsg(tgtGrp);
+	var env=$("#env_"+u).text();
+	var jname=$("#jname_"+u).text();
+	var interfacename='attach';
+	if(tgtGrp=='0')
+	{
+		tgtGrp=getLocalCache("group");
+		interfacename='detach';
+	}
+	$.ajax({type:'POST',
+	  url: getHost()+"job/"+interfacename+"?token="+getLocalCache("token"),
+	  data:{"groupname":tgtGrp,
+	  "env":env,
+	  "jobname":jname,
+	  "username":getLocalCache("userid")},
+	  success: function(data){
+	  if(data)
+	  {
+		var obj=eval('(' + data + ')');
+		if(obj.code==0)
+		{
+			showMsg("更改组成功");
+		}
+		else
+		{
+			showMsg("更改组失败");
+		}
+	  }
+	 },
+	 error: function()
+	 {
+		showMsg("提交请求失败");
+		}
+	});
+}
+function goAct(u)
+{
+	var grp=getLocalCache("group");
+	var env=$("#env_"+u).text();
+	var jname=$("#jname_"+u).text();
+	var opt=$("#opt_"+u).text();
+	$.ajax({type:'GET',
+	  url: getHost()+"job/action?token="+getLocalCache("token"),
+	  data:{"groupname":grp,
+	  "env":env,
+	  "jobname":jname,
+	  "options":opt_},
+	  success: function(data){
+	  if(data)
+	  {
+		var obj=eval('(' + data + ')');
+		if(obj.code==0)
+		{
+			showMsg("执行成功");
+		}
+		else
+		{
+			showMsg("执行失败");
+		}
+	  }
+	 },
+	 error: function()
+	 {
+		showMsg("提交请求失败");
+		}
+	});
 }
 </script>
