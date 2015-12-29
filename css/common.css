@@ -6,7 +6,7 @@
 .login_canvas{width:659px;height:438px;background-image:url(../img/login_canv.jpg);margin:40px auto 0 auto;}
 .login_btn{display:block;width:585px;height:80px;line-height:80px;font-size:22px;font-weight:bold;}
 .tw_close_btn{display:inline-block;}.oper_btn{display:inline-block;}
-.btn_run{display:inline-block;}
+.btn_run{display:inline-block;-moz-border-radius:2px;-webkit-border-radius: 2px;border-radius:2px;}
 .l_form_item_user{margin-top:114px;}
 .l_form_item_pass{margin-top:34px;}
 .l_form_item_btn{margin-top:34px;}

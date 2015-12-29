@@ -231,7 +231,7 @@ function initJobList(list)
 		list[u].options+"</div><div id='env_"+u+"' class='cell cell_long'>"+
 		list[u].env+"</div><div class='cell cell_long'><select id='s_"+u+"' onchange='job_grp("+u+")'>"+
 		$("#my_groups").html()+"<option value='0'>detach</option></select></div><div class='cell cell_long'><a onclic='goAct("+
-		u+")' class='tw_btn_white btn_short btn_run'>go</a></div></div>";
+		u+")' class='tw_btn_white btn_mini btn_run'>go</a></div></div>";
 	}
 	$("#job_list").html(listHtml);
 }
@@ -275,16 +275,19 @@ function job_grp(u)
 }
 function goAct(u)
 {
+	alert(u);
 	var grp=getLocalCache("group");
 	var env=$("#env_"+u).text();
 	var jname=$("#jname_"+u).text();
 	var opt=$("#opt_"+u).text();
-	$.ajax({type:'GET',
-	  url: getHost()+"job/action?token="+getLocalCache("token"),
-	  data:{"groupname":grp,
+	var _data={"groupname":grp,
 	  "env":env,
 	  "jobname":jname,
-	  "options":opt},
+	  "options":opt};
+	  alert(JSON.stringify(_data));
+	$.ajax({type:'GET',
+	  url: getHost()+"job/action?token="+getLocalCache("token"),
+	  data:_data,
 	  success: function(data){
 	  if(data)
 	  {
