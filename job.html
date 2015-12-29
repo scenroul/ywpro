@@ -231,7 +231,7 @@ function initJobList(list)
 		list[u].options+"</div><div id='env_"+u+"' class='cell cell_long'>"+
 		list[u].env+"</div><div class='cell cell_long'><select id='s_"+u+"' onchange='job_grp("+u+")'>"+
 		$("#my_groups").html()+"<option value='0'>detach</option></select></div><div class='cell cell_long'><a onclic='goAct("+
-		u+")' class='tw_btn_white btn_short'>Go</a></div></div>";
+		u+")' class='tw_btn_white btn_short btn_run'>go</a></div></div>";
 	}
 	$("#job_list").html(listHtml);
 }
@@ -284,7 +284,7 @@ function goAct(u)
 	  data:{"groupname":grp,
 	  "env":env,
 	  "jobname":jname,
-	  "options":opt_},
+	  "options":opt},
 	  success: function(data){
 	  if(data)
 	  {
